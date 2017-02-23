@@ -3,7 +3,7 @@ DE analysis function for edgeR, DESeq2, and Limma-Voom.
 
 ##How To Use It
 
-###To run DE_analysis.R
+###1. To run DE_analysis.R
 
 Rscript DE_analysis.R /fullpathTo/rawCount.txt /fullpathTo/metatable.txt Control KO /fullpathTo/DEG_analysis_res/ 2 3 True True /fullpathTo/DE-Analysis-AllComb-Fn.R 0.05 1.5 > /fullpathTo/DE_analysis.Rout.log 2> /fullpathTo/DE_analysis.Rerr.log
 
@@ -35,7 +35,7 @@ Where, the following parameters are:
 
 The log output - DE_analysis.Rout.log include the results summary, and log output DE_analysis.Rerr.log includes the error message if program runs incorrectly.
 
-###To run DE_analysis_visualization.R
+###2. To run DE_analysis_visualization.R
 
 Rscript DE_analysis_visualization.R /fullpathTo/DE_analysis_vis_Fn.R /fullpathTo/DEG_analysis_res group1 group2 2 3 0.05 1.5
 
