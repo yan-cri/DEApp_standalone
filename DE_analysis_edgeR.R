@@ -10,10 +10,10 @@ group2 <- as.character(options[4])
 workDir <- as.character(options[5])
 samp.cutoff <- as.numeric(options[6])
 cpm.val <- as.numeric(options[7])
-padj.val <- c(0.01, 0.05, 0.1)
-fc.val <- c(0, 1.5, 2)
 saveRes <- as.logical(options[8])
 padjOn <- as.logical(options[9])
+padj.val <- as.numeric(options[11])
+fc.val <- as.numeric(options[12])
 
 # countTabpath = "/Volumes/yli/CRI-BIO-478-LShen-RNAseq/Star_Res/featureCount-5_mRNA-22039.txt"
 # metaTabpath = "/Volumes/yli/CRI-BIO-478-LShen-RNAseq/metatable-subset1-rmC4.txt"
@@ -54,8 +54,8 @@ print(sprintf("The comparision is between %s and %s", as.character(trim(group1))
 ##The FC is calculated on group2/group1
 print(sprintf("The results are saved in %s", as.character(edgeR.res.path)))
 de.num.padj.fc.edger <- matrix(NA, nrow = 3, ncol = 3)
-for (i in 1:3){
-  for (j in 1:3){
+for (i in 1:length(fc.val)){
+  for (j in 1:length(padj.val)){
     edgeR.res <- edgeR.de.analysis(countTabpath = as.character(countTabpath), 
                                    metaTabpath = as.character(metaTabpath), 
                                    cpmCutoff = as.numeric(cpm.val), sampCutoff=as.numeric(samp.cutoff), 
@@ -81,8 +81,8 @@ print("**********")
 GeneRegFilter="up"
 print(sprintf("The filter is on %s", as.character(as.character(GeneRegFilter))))
 de.num.padj.fc.edger <- matrix(NA, nrow = 3, ncol = 3)
-for (i in 1:3){
-  for (j in 1:3){
+for (i in 1:length(fc.val)){
+  for (j in 1:length(padj.val)){
     edgeR.res <- edgeR.de.analysis(countTabpath = as.character(countTabpath), 
                                    metaTabpath = as.character(metaTabpath), 
                                    cpmCutoff = as.numeric(cpm.val), sampCutoff=as.numeric(samp.cutoff), 
@@ -108,8 +108,8 @@ print("**********")
 GeneRegFilter="down"
 print(sprintf("The filter is on %s", as.character(as.character(GeneRegFilter))))
 de.num.padj.fc.edger <- matrix(NA, nrow = 3, ncol = 3)
-for (i in 1:3){
-  for (j in 1:3){
+for (i in 1:length(fc.val)){
+  for (j in 1:length(padj.val)){
     edgeR.res <- edgeR.de.analysis(countTabpath = as.character(countTabpath), 
                                    metaTabpath = as.character(metaTabpath), 
                                    cpmCutoff = as.numeric(cpm.val), sampCutoff=as.numeric(samp.cutoff), 
