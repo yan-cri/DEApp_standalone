@@ -25,9 +25,8 @@ print(sprintf("The filter is on %s", as.character(as.character(GeneRegFilter))))
 print(sprintf("The comparision is between %s and %s", as.character(trim(options[3])), as.character(trim(options[4]))))
 ##The FC is calculated on group2/group1
 print(sprintf("The results are saved in %s", as.character(deseq2.res.path)))
-de.num.padj.fc.deseq2 <- matrix(NA, nrow = 3, ncol = 3)
-for (i in 1:3){
-  for (j in 1:3){
+for (i in 1:length(fc.val)){
+  for (j in 1:length(padj.val)){
     deseq2.res <- deseq2.de.analysis(countTabpath = as.character(options[1]),
                                      metaTabpath = as.character(options[2]), 
                                      cpmCutoff = as.numeric(cpm.val), sampCutoff=as.numeric(samp.cutoff), 
@@ -45,16 +44,11 @@ for (i in 1:3){
     de.num.padj.fc.deseq2[i,j] = length(deseq2.res$degName)
   }
 }
-colnames(de.num.padj.fc.deseq2) <- paste("adj-p < ", as.numeric(padj.val), sep = "")
-rownames(de.num.padj.fc.deseq2) <- paste("|FC| > ", as.numeric(fc.val), sep = "")
-fname <- paste(as.character(deseq2.res.path),"/DESeq2-summary-filter-", as.character(GeneRegFilter), ".txt", sep = "")
-write.table(de.num.padj.fc.deseq2, as.character(fname), quote = F, col.names = NA, row.names = T, sep = "\t")
 print("**********")
 GeneRegFilter="up"
 print(sprintf("The filter is on %s", as.character(as.character(GeneRegFilter))))
-de.num.padj.fc.deseq2 <- matrix(NA, nrow = 3, ncol = 3)
-for (i in 1:3){
-  for (j in 1:3){
+for (i in 1:length(fc.val)){
+  for (j in 1:length(padj.val)){
     deseq2.res <- deseq2.de.analysis(countTabpath = as.character(options[1]),
                                      metaTabpath = as.character(options[2]), 
                                      cpmCutoff = as.numeric(cpm.val), sampCutoff=as.numeric(samp.cutoff), 
@@ -72,16 +66,10 @@ for (i in 1:3){
     de.num.padj.fc.deseq2[i,j] = length(deseq2.res$degName)
   }
 }
-colnames(de.num.padj.fc.deseq2) <- paste("adj-p < ", as.numeric(padj.val), sep = "")
-rownames(de.num.padj.fc.deseq2) <- paste("|FC| > ", as.numeric(fc.val), sep = "")
-fname <- paste(as.character(deseq2.res.path),"/DESeq2-summary-filter-", as.character(GeneRegFilter), ".txt", sep = "")
-write.table(de.num.padj.fc.deseq2, as.character(fname), quote = F, col.names = NA, row.names = T, sep = "\t")
 print("**********")
 GeneRegFilter="down"
-print(sprintf("The filter is on %s", as.character(as.character(GeneRegFilter))))
-de.num.padj.fc.deseq2 <- matrix(NA, nrow = 3, ncol = 3)
-for (i in 1:3){
-  for (j in 1:3){
+for (i in 1:length(fc.val)){
+  for (j in 1:length(padj.val)){
     deseq2.res <- deseq2.de.analysis(countTabpath = as.character(options[1]),
                                      metaTabpath = as.character(options[2]), 
                                      cpmCutoff = as.numeric(cpm.val), sampCutoff=as.numeric(samp.cutoff), 
@@ -99,9 +87,5 @@ for (i in 1:3){
     de.num.padj.fc.deseq2[i,j] = length(deseq2.res$degName)
   }
 }
-colnames(de.num.padj.fc.deseq2) <- paste("adj-p < ", as.numeric(padj.val), sep = "")
-rownames(de.num.padj.fc.deseq2) <- paste("|FC| > ", as.numeric(fc.val), sep = "")
-fname <- paste(as.character(deseq2.res.path),"/DESeq2-summary-filter-", as.character(GeneRegFilter), ".txt", sep = "")
-write.table(de.num.padj.fc.deseq2, as.character(fname), quote = F, col.names = NA, row.names = T, sep = "\t")
 print("End DESeq2 DE analysis")
 print("============================")
