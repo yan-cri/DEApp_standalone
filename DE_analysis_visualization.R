@@ -1,26 +1,26 @@
 rm(list = ls())
 options <- commandArgs(trailingOnly = TRUE)
-print(sprintf("source code is %s", as.character(options[1])))
-source(as.character(options[1]))
+print(sprintf("source code is %s", paste(getwd(), 'R', 'DE_analysis_vis_Fn.R', sep = '/')))
+source(paste(getwd(), 'R', 'DE_analysis_vis_Fn.R', sep = '/'))
 ####
 
-resDir <- as.character(options[2])
+resDir <- as.character(options[1])
+if (!dir.exists(resDir)) dir.create(resDir)
 print("----")
 workDir <- resDir
 setwd(workDir)
 print(sprintf("Working directory is at %s, the same as results saving directory", resDir))
 
-group1 <- as.character(options[3])
-group2 <- as.character(options[4])
+group1 <- as.character(options[2])
+group2 <- as.character(options[3])
 
-samp.cutoff <- as.numeric(options[5])
-cpm.val <- as.numeric(options[6])
+samp.cutoff <- as.numeric(options[4])
+cpm.val <- as.numeric(options[5])
 
-padj.val <- as.numeric(options[7])
-fc.val <- as.numeric(options[8])
+padj.val <- as.numeric(options[6])
+fc.val <- as.numeric(options[7])
 
 ####
-# source("/Volumes/yli/DE_tools/DE_analysis_vis_Fn.R")
 # resDir <- "/Volumes/yli/DE_tools/DEG_analysis_res/"
 # workDir <- resDir
 # setwd(workDir)

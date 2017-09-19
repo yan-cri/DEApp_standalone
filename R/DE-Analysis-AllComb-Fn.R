@@ -7,7 +7,8 @@ trim <- function (x) gsub("^\\s+|\\s+$", "", x)
 edgeR.de.analysis <- function(countTabpath, metaTabpath, cpmCutoff, sampCutoff, group1, group2, padjust, Pcutoff, FCcutoff, GeneRegFilter, saveRes) {
   count.all <- read.delim(as.character(countTabpath), row.names=1, check.names=FALSE)
   metaTab <- read.delim(as.character(metaTabpath), header = T)
-  metaTab <- metaTab[match(colnames(count.all), metaTab$Sample),]
+  colnames(metaTab) <- tolower(colnames(metaTab))
+  metaTab <- metaTab[match(colnames(count.all), metaTab$sample),]
   
   if (dim(metaTab)[2]>2) {
     groupinfo <- metaTab[,2]
@@ -113,7 +114,7 @@ edgeR.de.analysis <- function(countTabpath, metaTabpath, cpmCutoff, sampCutoff, 
 limmavoom.de.analysis <- function(countTabpath, metaTabpath, cpmCutoff, sampCutoff, group1, group2, padjust, Pcutoff, FCcutoff, GeneRegFilter, saveRes) {
   count.all <- read.delim(as.character(countTabpath), row.names=1, check.names=FALSE)
   metaTab <- read.delim(as.character(metaTabpath), header = T)
-  metaTab <- metaTab[match(colnames(count.all), metaTab$Sample),]
+  metaTab <- metaTab[match(colnames(count.all), metaTab$sample),]
   
   if (dim(metaTab)[2]>2) {
     groupinfo <- metaTab[,2]
@@ -221,7 +222,7 @@ limmavoom.de.analysis <- function(countTabpath, metaTabpath, cpmCutoff, sampCuto
 deseq2.de.analysis <- function(countTabpath, metaTabpath, cpmCutoff, sampCutoff, group1, group2, padjust, Pcutoff, FCcutoff, GeneRegFilter, saveRes) {
   count.all <- read.delim(as.character(countTabpath), row.names=1, check.names=FALSE)
   metaTab <- read.delim(as.character(metaTabpath), header = T)
-  metaTab <- metaTab[match(colnames(count.all), metaTab$Sample),]
+  metaTab <- metaTab[match(colnames(count.all), metaTab$sample),]
   
   if (dim(metaTab)[2]>2) {
     groupinfo <- metaTab[,2]

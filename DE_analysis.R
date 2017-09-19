@@ -1,41 +1,42 @@
 rm(list = ls())
 options <- commandArgs(trailingOnly = TRUE)
-print(sprintf("source code is %s", as.character(options[10])))
-source(as.character(options[10]))
-# source("/Volumes/yli/DE_tools/DE-Analysis-AllComb-Fn.R")
+
+print(sprintf("source code is %s", paste(getwd(), 'R', 'DE-Analysis-AllComb-Fn.R', sep = '/')))
+source(paste(getwd(), 'R', 'DE-Analysis-AllComb-Fn.R', sep = '/'))
+
 countTabpath <- as.character(options[1])
 metaTabpath <- as.character(options[2])
 group1 <- as.character(options[3])
 group2 <- as.character(options[4])
-workDir <- as.character(options[5])
+outputDir <- as.character(options[5])
+if (!dir.exists(outputDir)) dir.create(outputDir)
 samp.cutoff <- as.numeric(options[6])
 cpm.val <- as.numeric(options[7])
 saveRes <- as.logical(options[8])
 padjOn <- as.logical(options[9])
-padj.val <- as.numeric(options[11])
-fc.val <- as.numeric(options[12])
+padj.val <- as.numeric(options[10])
+fc.val <- as.numeric(options[11])
 
-# countTabpath = "/Volumes/yli/DE_tools/testData/featureCount-4_mRNA-22039.txt"
-# metaTabpath = "//Volumes/yli/DE_tools/testData/metatable-subset1-rmC4.txt"
-# cpm.val <- as.numeric(5)
+# countTabpath = paste(getwd(), 'testData', 'pnas-count_singleFactor.txt', sep = '/')
+# metaTabpath = paste(getwd(), 'testData', 'pnas-count_singleFactor-meta.txt', sep = '/')
+# cpm.val <- as.numeric(1)
 # samp.cutoff <- as.numeric(2)
-# workDir <- "/Volumes/yli/DE_tools/DEG_analysis_res"
+# outputDir <- '/Users/yanli/Desktop/DE_tools/res-test'
+# if (!dir.exists(outputDir)) dir.create(outputDir)
 # saveRes <- as.logical(T)
 # padjOn <- as.logical(T)
 # cpmCutoff = as.numeric(cpm.val)
 # sampCutoff=as.numeric(samp.cutoff)
-# group1="C_control"
-# group2="C_ko"
+# group1="DHT"
+# group2="Control"
 # padjust=as.character(padjOn)
 # padj.val <- 0.05
 # fc.val <- 1.5
 
 #######################################
-########################################
-### Based on STAR alignment results
-###########################################
 ###edgeR analysis 
-setwd(workDir)
+setwd(outputDir)
+print(sprintf('currect work directory is %s', as.character(outputDir)))
 print("============================")
 print("Start edgeR DE analysis")
 edgeR.res.path <- paste(getwd(), "/edgeR-res-comp-", as.character(trim(group1)), "_", as.character(trim(group2)), sep="")
