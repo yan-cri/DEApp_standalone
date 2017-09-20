@@ -3,9 +3,9 @@ DE analysis function for edgeR, DESeq2, and Limma-Voom corresponding to the publ
 
 ## How To Use It
 
-### 1. step1. downloaed this repo to your local PC
+### 1. step1. download this repo to your local PC
 
-### 2. step2. go into the downloaded folder, you can see R script named as 'DE_analysis.R', which is used to run all 3 differnet DE anlaysis and generate overlapping venn-diagram.
+### 2. step2. go into the downloaded folder, you can see R script named as 'DE_analysis.R', which is used to run all 3 different DE analysis and generate overlapping Venn-diagram.
 
 To run 'DE_analysis.R', you can use command 'Rscript DE_analysis.R' with additional 11 parameter flags defined as below: 
 
@@ -33,7 +33,7 @@ To run 'DE_analysis.R', you can use command 'Rscript DE_analysis.R' with additio
 
 The full command to run the test sample is 'Rscript DE_analysis.R testData/pnas-count_singleFactor.txt testData/pnas-count_singleFactor-meta.txt Control DHT $PWD/DEG_analysis_results 2 1 True True 0.05 1.5 > DE_analysis.Rout.log 2> DE_analysis.Rerr.log'
 
-The log files are saved under the currect directory with name 'DE_analysis.Rout.log' and 'DE_analysis.Rerr.log', where 'DE_analysis.Rout.log' includes the results summary, and 'DE_analysis.Rerr.log' includes the error message if program runs incorrectly.
+The log files are saved under the current directory with name 'DE_analysis.Rout.log' and 'DE_analysis.Rerr.log', where 'DE_analysis.Rout.log' includes the results summary, and 'DE_analysis.Rerr.log' includes the error message if program runs incorrectly.
 
 ## Feedback
 
