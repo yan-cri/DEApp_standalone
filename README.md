@@ -1,13 +1,13 @@
 # DE_tools
-DE analysis function for edgeR, DESeq2, and Limma-Voom.
+DE analysis function for edgeR, DESeq2, and Limma-Voom corresponding to the published manuscript at https://scfbm.biomedcentral.com/articles/10.1186/s13029-017-0063-4, the DEApp shiny application is accessible at https://gallery.shinyapps.io/DEApp/ or https://yanli.shinyapps.io/DEApp/
 
-##How To Use It
+## How To Use It
 
-###1. To run DE_analysis.R
+### 1. step1. downloaed this repo to your local PC
 
-Rscript DE_analysis.R /fullpathTo/rawCount.txt /fullpathTo/metatable.txt Control KO /fullpathTo/DEG_analysis_res/ 2 3 True True /fullpathTo/DE-Analysis-AllComb-Fn.R 0.05 1.5 > /fullpathTo/DE_analysis.Rout.log 2> /fullpathTo/DE_analysis.Rerr.log
+### 2. step2. go into the downloaded folder, you can see R script named as 'DE_analysis.R', which is used to run all 3 differnet DE anlaysis and generate overlapping venn-diagram.
 
-Where, the following parameters are:
+To run 'DE_analysis.R', you can use command 'Rscript DE_analysis.R' with additional 11 parameter flags defined as below: 
 
 1. raw count input: /fullpathTo/rawCount.txt
 
@@ -17,7 +17,7 @@ Where, the following parameters are:
 
 4. group 2 name: e.g. KO, consistent with metatable.txt group information
 
-5. output directory: /fullpathTo/outputDir
+5. output directory: /fullpathTo/DEG_analysis_results/
 
 6. group cutoff: 2
 
@@ -27,37 +27,15 @@ Where, the following parameters are:
 
 9. logical, whether to use orignal p-value or FDR corrected p-value for DEGs identification: True
 
-10. full path to the source code: /fullpathTo/DE-Analysis-AllComb-Fn.R
+10. p-values / FRD adjusted p-value: 0.05
 
-11. p-values / FRD adjusted p-value: 0.05
+11. FC(Fold Change) cutoff: 1.5
 
-12. FC(Fold Change) cutoff: 1.5
+The full command to run the test sample is 'Rscript DE_analysis.R testData/pnas-count_singleFactor.txt testData/pnas-count_singleFactor-meta.txt Control DHT $PWD/DEG_analysis_results 2 1 True True 0.05 1.5 > DE_analysis.Rout.log 2> DE_analysis.Rerr.log'
 
-The log output - DE_analysis.Rout.log include the results summary, and log output DE_analysis.Rerr.log includes the error message if program runs incorrectly.
+The log files are saved under the currect directory with name 'DE_analysis.Rout.log' and 'DE_analysis.Rerr.log', where 'DE_analysis.Rout.log' includes the results summary, and 'DE_analysis.Rerr.log' includes the error message if program runs incorrectly.
 
-###2. To run DE_analysis_visualization.R
+## Feedback
 
-Rscript DE_analysis_visualization.R /fullpathTo/DE_analysis_vis_Fn.R /fullpathTo/DEG_analysis_res group1 group2 2 3 0.05 1.5
-
-Where, the following parameters are:
-
-1. function code: /fullpathTo/DE_analysis_vis_Fn.R
-
-2. DE analysis results directory in above running: /fullpathTo/DEG_analysis_res
-
-3. group 1 name: e.g. Control, consistent with above running 
-
-4. group 2 name: e.g. KO, consistent with above running 
-
-5. group cutoff: 2
-
-6. cpm cutoff: 3
-
-7. p-values / FRD adjusted p-value: 0.05
-
-8. FC(Fold Change) cutoff: 1.5
-
-
-
-
+If you have any comments or suggestions for this tool, please contact Yan Li, Center for Research Informatics, the University of Chicago at e-mail yli22@bsd.uchicago.edu
 
