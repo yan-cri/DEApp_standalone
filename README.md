@@ -3,7 +3,7 @@ DE analysis function for edgeR, DESeq2, and Limma-Voom corresponding to the publ
 
 ## How To Use It
 
-### 1. step1. download this repo to your local PC
+### 1. step1. download this repo to your local PC. Directions for downloading, please click top right green color 'Clone or download' button.
 
 ### 2. step2. go into the downloaded folder, you can see R script named as 'DE_analysis.R', which is used to run all 3 different DE analysis and generate overlapping Venn-diagram.
 
