@@ -1,6 +1,8 @@
 # DE_tools
 DE analysis function for edgeR, DESeq2, and Limma-Voom corresponding to the published manuscript at https://scfbm.biomedcentral.com/articles/10.1186/s13029-017-0063-4, the DEApp shiny application is accessible at https://gallery.shinyapps.io/DEApp/ or https://yanli.shinyapps.io/DEApp/
 
+If you are going to use the scripts here for your DE analysis, please cite "Yan Li and Jorge Andrade. DEApp: an interactive web interface for differential expression analysis of next generation sequence data. Source Code for Biology and Medicine, 12:2, February 2017."
+
 ## How To Use It
 
 ### 1. step1. download this repo to your local PC. Directions for downloading, please click top right green color 'Clone or download' button.
