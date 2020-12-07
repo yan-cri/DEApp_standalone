@@ -22,7 +22,7 @@ fc.val <- as.numeric(options[11])
 # metaTabpath = paste(getwd(), 'testData', 'pnas-count_singleFactor-meta.txt', sep = '/')
 # cpm.val <- as.numeric(1)
 # samp.cutoff <- as.numeric(2)
-# outputDir <- '/Users/yanli/Desktop/DE_tools/res-test'
+# outputDir <- '/Users/yanli/Desktop/DEApp_standalone/res-test'
 # if (!dir.exists(outputDir)) dir.create(outputDir)
 # saveRes <- as.logical(T)
 # padjOn <- as.logical(T)

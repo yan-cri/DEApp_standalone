@@ -72,11 +72,11 @@ edgeR.de.analysis <- function(countTabpath, metaTabpath, cpmCutoff, sampCutoff, 
   if(as.character(padjust)==TRUE) {
     tp <- topTags(test,n=Inf, adjust.method="BH", sort.by="none")
     filter <- decideTestsDGE(test, adjust.method="BH", p.value=pvalue, lfc=log2(FC))
-    tp$table$filter <- filter
+    tp$table$filter <- as.numeric(filter)
   } else {
     tp <- topTags(test,n=Inf, adjust.method="none", sort.by="none")
     filter <- decideTestsDGE(test, adjust.method="none", p.value=pvalue, lfc=log2(FC))
-    tp$table$filter <- filter
+    tp$table$filter <- as.numeric(filter)
   }
   # print(summary(filter))
   
@@ -177,11 +177,11 @@ limmavoom.de.analysis <- function(countTabpath, metaTabpath, cpmCutoff, sampCuto
   if(as.character(padjust)==T){
     tpvoom <- topTable(contrast.fit, number=Inf, adjust="BH", sort.by="none") 
     filtervoom <- decideTests(contrast.fit, adjust.method="BH", p.value=pvalue, lfc=log2(FC))
-    tpvoom$filter <- filtervoom
+    tpvoom$filter <- as.numeric(filtervoom)
   } else {
     tpvoom <- topTable(contrast.fit, number=Inf, adjust="none", sort.by="none") 
     filtervoom <- decideTests(contrast.fit, adjust.method="none", p.value=pvalue, lfc=log2(FC))
-    tpvoom$filter <- filtervoom
+    tpvoom$filter <- as.numeric(filtervoom)
   }
   # print(summary(filtervoom))
   
